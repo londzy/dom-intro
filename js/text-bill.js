@@ -40,14 +40,14 @@ function textBillTotal(){
     else if (totalCost >= 30){
         totalOne.classList.add("warning");
     }
-    if (totalCost <= 50){
+  /*  if (totalCost <= 50){
         // adding the danger class will make the text red
         totalOne.classList.remove("danger");
       }
       if (totalCost <= 30){
           // adding the danger class will make the text red
           totalOne.classList.remove("warning");
-        }
+        }*/
 }
 
 
