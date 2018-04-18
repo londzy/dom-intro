@@ -6,9 +6,9 @@ var totalCostElem = document.querySelector(".totalTwo");
 var textTotalAddBtnElement = document.querySelector(".textTotalAddBtn");
 
 
-var callsTotal1 = 0;
-var smsTotal1 = 0;
-function radioBillTotal(){
+var callTotalTwoo = 0;
+var smsTotals = 0;
+var radioBillTotal =function(){
 
     var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
   if (checkedRadioBtn){
@@ -17,20 +17,20 @@ function radioBillTotal(){
   }
 
     if (billItemType === "call"){
-        callsTotal1 += 2.75
+        callTotalTwoo += 2.75
     }
     else if (billItemType === "sms"){
-        smsTotal1 += 0.75;
+        smsTotals += 0.75;
     }
 
-    callsTotalElemen.innerHTML = callsTotal1.toFixed(2);
-    smsTotalElemen.innerHTML = smsTotal1.toFixed(2);
-    var totalCost = callsTotal1 + smsTotal1;
+    callsTotalElemen.innerHTML = callTotalTwoo.toFixed(2);
+    smsTotalElemen.innerHTML = smsTotals.toFixed(2);
+    var totalCost = callTotalTwoo + smsTotals;
     totalCostElem.innerHTML = totalCost.toFixed(2);
 
 
     if (totalCost >= 50){
-      
+
         totalCostElem.classList.add("danger");
     }
     else if (totalCost >= 30){
