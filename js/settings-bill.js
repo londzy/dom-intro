@@ -1,11 +1,11 @@
 // get a reference to the sms or call radio buttons
-var billItemTypeWithSettings = document.querySelector('.billItemTypeWithSettings');
-var callTotal = document.querySelector(".callTotalSettings");
-var smsTotal = document.querySelector(".smsTotalSettings");
+//var billItemTypeWithSettingsElement= document.querySelector('.billItemTypeWithSettings');
+var callsTotalElement = document.querySelector(".callTotalSettings");
+var smsTotalElement = document.querySelector(".smsTotalSettings");
 
 // get refences to all the settings fields
 var totSettings = document.querySelector(".totalSettings");
-console.log(totSettings);
+
 
 //get a reference to the add button
 var addBtn = document.querySelector(".addBtn");
@@ -19,70 +19,90 @@ var criticalLevelSetting = document.querySelector(".criticalLevelSetting");
 // create a variables that will keep track of all the settings
 var callTotal = 0;
 var smsTotal = 0;
-var total= 0;
+var totall= 0;
 
-var callCost= 0;
-var smsCost = 0;
-var warningLevelSetting = 0;
+var callTotalSettin = 0;
+var smsTotalSettin = 0;
+var warningLevelSettin = 0;
 var criticalLevelSettin = 0;
 
-//updateSettings.addEventListener('click', update)
 
 // create a variables that will keep track of all three totals.
 var totalSettings = 0;
 
 var update = function(){
-  callCost= parseFloat(callCostSetting.value);
-  smsCost= parseFloat(smsCostSetting.value);
-  warningLevelSetting = parseFloat(warningLevelSetting.value);
-  criticalLevelSetting = parseFloat(criticalLevelSetting.value);
+  callTotalSettin= parseFloat(callCostSetting.value);
+  smsTotalSettin= parseFloat(smsCostSetting.value);
+  warningLevelSettin = parseFloat(warningLevelSetting.value);
+  criticalLevelSettin = parseFloat(criticalLevelSetting.value);
+  console.log(callTotalSettin);
+
+  if (totall < criticalLevelSettin){
+    totSettings.classList.remove("danger");
+  }
+
+if (totall < warningLevelSettin){
+     totSettings.classList.remove("danger");
+     addBtn.disabled= false;
+   }
 
 };
+updateSettings.addEventListener('click', update);
 
 var radioBillTotal =function(){
 
-    var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
+    var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
   if (checkedRadioBtn){
-      var billItemType = checkedRadioBtn.value
-
-
+      var billItemType = checkedRadioBtn.value;
   }
-if (total >=criticalLevelSettin){
+// if (total >=criticalLevelSettin){
+//
+// } else {
 
-} else {
     if (billItemType === "call"){
-        callsTotal += callCost;
+        callTotal += callTotalSettin;
       //console.log(callsTotal);
     }
-    else if (billItemType === "sms"){
-        smsTotal += smsCost;
+    if (billItemType === "sms"){
+        smsTotal += smsTotalSettin;
     }
+     totall=smsTotal + callTotal;
   //  total = callsTotal + smsTotal;
+  callsTotalElement.innerHTML = callTotal.toFixed(2);
+  smsTotalElement.innerHTML = smsTotal.toFixed(2);
+  totSettings.innerHTML = totall.toFixed(2);
+  if (totall >= warningLevelSettin){
+     totSettings.classList.add("warning");
 
-  }
+ }
+
+ if (totall >= criticalLevelSettin){
+     // adding the danger class will make the text red
+     totSettings.classList.add("danger");
+     addBtn.disabled= true;
+   }
+
+
+}
+ // else
+ //}
+
+  //
     // update the correct total
 
-  var total = callTotal + smsTotal;
-    callTotal.innerHTML = callTotalSettings.toFixed(2);
-    smsTotal.innerHTML = smsTotalSettings.toFixed(2);
+//  var total = callTotal + smsTotal;
 
-    totSettings.innerHTML = total.toFixed(2);
+
+    //totSettingsE.innerHTML = total.toFixed(2);
 
     //color the total based on the criteria
-    if (total >= criticalLevelSettin){
-        // adding the danger class will make the text red
-        totSettings.classList.add("danger");
+    // if (totall >= criticalLevelSettin){
+    //     // adding the danger class will make the text red
+    //     totSettings.classList.add("danger");
+    //
+    // }
 
-    }
-    else if (total >= warningLevelSettingSettin){
-        totSettings.classList.add("warning");
-
-    }
-    else {
-      totSettings.classList.remove("danger");
-      totSettings.classList.remove("danger");
-    }
-};
+//};
 
 addBtn.addEventListener('click', radioBillTotal);
 
@@ -102,7 +122,7 @@ addBtn.addEventListener('click', radioBillTotal);
 
 
 //add an event listener for when the 'Update settings' button is pressed
-updateSettings.addEventListener('click', update);
+//updateSettings.addEventListener('click', update);
 
 //add an event listener for when the add button is pressed
 //addBtn.addEventListener('click', addBtn);
