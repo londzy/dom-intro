@@ -39,11 +39,12 @@ var update = function(){
 
   if (totall < criticalLevelSettin){
     totSettings.classList.remove("danger");
+     addBtn.disabled= false;
   }
 
 if (totall < warningLevelSettin){
-     totSettings.classList.remove("danger");
-     addBtn.disabled= false;
+     totSettings.classList.remove("warning");
+
    }
 
 };
