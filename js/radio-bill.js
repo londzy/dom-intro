@@ -17,10 +17,10 @@ var radioBillTotal =function(){
   }
 
     if (billItemType === "call"){
-        calTotal2 += 2.75
+        calTotal2 += 1
     }
     else if (billItemType === "sms"){
-        smsTotals += 0.75;
+        smsTotals += 2;
     }
 
     callsTotalElemen.innerHTML = calTotal2.toFixed(2);
