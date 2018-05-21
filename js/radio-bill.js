@@ -8,33 +8,42 @@ var textTotalAddBtnElement = document.querySelector(".textTotalAddBtn");
 
 var calTotal2 = 0;
 var smsTotals = 0;
+
+
+
+
+var rd = TextBill();
+
 var radioBillTotal =function(){
 
-    var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
+    var checkedRadioBtn = document.querySelector("input[name='billItemTypeRadio']:checked");
   if (checkedRadioBtn){
-      var billItemType = checkedRadioBtn.value
+      var us = checkedRadioBtn.value
 
   }
 
-    if (billItemType === "call"){
-        calTotal2 += 1
-    }
-    else if (billItemType === "sms"){
-        smsTotals += 2;
-    }
+  rd.bills(us)
 
-    callsTotalElemen.innerHTML = calTotal2.toFixed(2);
-    smsTotalElemen.innerHTML = smsTotals.toFixed(2);
-    var totalCost = calTotal2 + smsTotals;
-    totalCostElem.innerHTML = totalCost.toFixed(2);
+//update the totals that is displayed on the screen.
+callsTotalElemen.innerHTML = rd.getCall();
+smsTotalElemen.innerHTML = rd.getSms();
+// var totalCost = callTotal + smsTotal;
+totalCostElem.innerHTML = rd.getTotalCost();
 
+if (rd.getTotalCost() >= 50){
+    // adding the danger class will make the text red
+    totalCostElem.classList.add("danger");
+}
+else if (rd.getTotalCost() >= 30){
+    totalCostElem.classList.add("warning");
+}
+if (rd.getTotalCost() <= 50){
+    // adding the danger class will make the text red
+    totalCostElem.classList.remove("danger");
+  }
+  if (rd.getTotalCost() <= 30){
 
-    if (totalCost >= 50){
-
-        totalCostElem.classList.add("danger");
-    }
-    else if (totalCost >= 30){
-        totalCostElem.classList.add("warning");
+      totalCostElem.classList.remove("warning");
     }
 };
 
