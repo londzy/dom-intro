@@ -20,6 +20,9 @@ addToBillBtn.addEventListener('click', textBillTotal);
 var clc = TextBill();
 
 
+
+
+
     function textBillTotal(){
     // get the value entered in the billType textfield
     var billTypeEntered = billTypeText.value.trim();
@@ -30,8 +33,7 @@ var clc = TextBill();
     // else if (billTypeEntered === "sms"){
     //     smsTotal += 0.75;
     // }
-      clc.callsTotals(billTypeEntered)
-      clc.smsTotals(billTypeEntered)
+      clc.bills(billTypeEntered)
 
     //update the totals that is displayed on the screen.
     callTotalOne.innerHTML = clc.getCall();
@@ -39,18 +41,18 @@ var clc = TextBill();
     // var totalCost = callTotal + smsTotal;
     totalOne.innerHTML = clc.getTotalCost();
 
-    if (getTotalCost >= 50){
+    if (clc.getTotalCost() >= 50){
         // adding the danger class will make the text red
         totalOne.classList.add("danger");
     }
-    else if (getTotalCost >= 30){
+    else if (clc.getTotalCost() >= 30){
         totalOne.classList.add("warning");
     }
-    if (getTotalCost <= 50){
+    if (clc.getTotalCost() <= 50){
         // adding the danger class will make the text red
         totalOne.classList.remove("danger");
       }
-      if (getTotalCost <= 30){
+      if (clc.getTotalCost() <= 30){
 
           totalOne.classList.remove("warning");
         }
