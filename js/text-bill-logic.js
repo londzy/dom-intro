@@ -5,8 +5,7 @@ function TextBill() {
   var smsTotal = 0;
   var totalCost = 0;
 
-  var billTypeEntered = callTotal.toFixed(2);
-  totalOne.innerHTML = billTypeEntered;
+
 
 
   function bills(billTypeEntered) {
@@ -23,16 +22,17 @@ function TextBill() {
   // }
 
   function getCall() {
-    return callTotal;
+    return callTotal.toFixed(2);
   }
 
   function getSms() {
-    return smsTotal;
+    return smsTotal.toFixed(2);
 
   }
 
   function getTotalCost() {
-    return totalCost = callTotal + smsTotal;
+    totalCost = callTotal + smsTotal;
+    return totalCost.toFixed(2);
 
   }
 
