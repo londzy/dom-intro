@@ -5,14 +5,14 @@ function TextBill() {
   var smsTotal = 0;
   var totalCost = 0;
 
-  function callsTotals() {
+  function callsTotals(billTypeEntered) {
     if (billTypeEntered === "call") {
-      callTotal += 2.75
+      callTotal += 2.75;
     }
 
   }
 
-  function smsTotals() {
+  function smsTotals(billTypeEntered) {
     if (billTypeEntered === "sms") {
       smsTotal += 0.75;
     }
@@ -41,11 +41,4 @@ function TextBill() {
     smsTotals,
     callsTotals
   }
-  // if (billTypeEntered === "call"){
-  //     callTotal += 2.75
-  // }
-  // else if (billTypeEntered === "sms"){
-  //     smsTotal += 0.75;
-  // }
-
 }

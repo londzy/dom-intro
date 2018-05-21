@@ -13,11 +13,14 @@ var totalOne = document.querySelector('.totalOne');
 // var smsTotal = 0;
 // var totalCost = 0;
 
-
+addToBillBtn.addEventListener('click', textBillTotal);
 //add an event listener for when the add button is pressed
 
 
-function textBillTotal(){
+var clc = TextBill();
+
+
+    function textBillTotal(){
     // get the value entered in the billType textfield
     var billTypeEntered = billTypeText.value.trim();
     // update the correct total
@@ -27,33 +30,35 @@ function textBillTotal(){
     // else if (billTypeEntered === "sms"){
     //     smsTotal += 0.75;
     // }
+      clc.callsTotals(billTypeEntered)
+      clc.smsTotals(billTypeEntered)
 
     //update the totals that is displayed on the screen.
-    callTotalOne.innerHTML = callTotal;
-    smsTotalOne.innerHTML = smsTotal;
-    var totalCost = callTotal + smsTotal;
-    totalOne.innerHTML = totalCost;
+    callTotalOne.innerHTML = clc.getCall();
+    smsTotalOne.innerHTML = clc.getSms();
+    // var totalCost = callTotal + smsTotal;
+    totalOne.innerHTML = clc.getTotalCost();
 
-    if (totalCost >= 50){
+    if (getTotalCost >= 50){
         // adding the danger class will make the text red
         totalOne.classList.add("danger");
     }
-    else if (totalCost >= 30){
+    else if (getTotalCost >= 30){
         totalOne.classList.add("warning");
     }
-  /*  if (totalCost <= 50){
+    if (getTotalCost <= 50){
         // adding the danger class will make the text red
         totalOne.classList.remove("danger");
       }
-      if (totalCost <= 30){
-          // adding the danger class will make the text red
+      if (getTotalCost <= 30){
+
           totalOne.classList.remove("warning");
-        }*/
+        }
 }
 
 
 //textTotalAddBtn.addEventListener('click', textBillTotal);
-addToBillBtn.addEventListener('click', textBillTotal);
+
 
 
 //in the event listener check if the value in the bill type textbox is 'sms' or 'call'
