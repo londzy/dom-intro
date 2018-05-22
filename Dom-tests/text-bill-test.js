@@ -12,16 +12,18 @@ describe("textBill", function(){
     assert.equal(smsz.getSms(),0.75);
   });
 
-  it("should show 0.00 when nothing is inputted " ,function()  {
+  it("should show the total of 'sms' and 'call' added R3.50   " ,function()  {
     var nothing = TextBill() ;
-    nothing.bills('totalOne')
-    assert.equal(nothing.getTotalCost(),0.00);
+      nothing.bills('call')
+      nothing.bills('sms')
+    //nothing.bills('totalOne')
+    assert.equal(nothing.getTotalCost(),3.50);
   });
 
-  // it("should show the amount of a call R0.75 " ,function()  {
-  //   assert.equal(calculateBtnClicked("sms"),0.75);
-  // });
-  // it("should calculate the sms and/or call total of R3.5 " ,function()  {
-  //   assert.equal(calculateBtnClicked("call,sms"),3.5);
-  // });
+    it("should show 0.00 when nothing is inputted " ,function()  {
+      var nothing = TextBill() ;
+      nothing.bills('totalOne')
+      assert.equal(nothing.getTotalCost(),0.00);
+    });
+  
 });

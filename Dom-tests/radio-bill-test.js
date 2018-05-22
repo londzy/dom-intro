@@ -12,7 +12,15 @@ describe("radioBill", function(){
       assert.equal(msg.getSms(),0.75);
     });
 
-    it("should show 0.00 when nothing is clicked " ,function()  {
+    it("should return the total of R3.50 when both 'sms' and 'call' are selected " ,function()  {
+      var nothing = TextBill() ;
+        nothing.bills('call')
+        nothing.bills('sms')
+      //nothing.bills('totalOne')
+      assert.equal(nothing.getTotalCost(),3.50);
+    });
+
+    it("should return 0.00 when nothing is clicked " ,function()  {
       var nthing = TextBill() ;
       nthing.bills('totalCostElem')
       assert.equal(nthing.getTotalCost(),0.00);
