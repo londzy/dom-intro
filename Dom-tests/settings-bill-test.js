@@ -14,7 +14,16 @@ describe("settingsWithBill", function(){
     assert.equal(smsz.getSms(),1);
   });
 
-  
+
+    it("should return the total of 'call' and 'sms' added together  " ,function()  {
+      var totalss = settingsBill() ;
+      //smsz.setCostSms(1)
+      totalss.callBill('calls')
+      totalss.smsBill('sms')
+      assert.equal(totalss.getSms(),3);
+    });
+
+
   // it("should return R0.75 when 'sms' is inputted" ,function()  {
   //   var smsz = TextBill() ;
   //   smsz.bills('sms')
