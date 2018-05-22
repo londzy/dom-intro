@@ -39,6 +39,13 @@ var calculateBill= function(billType){
   }
 }
 //create 4 functions
+function getCall() {
+  return callTotalSettin;
+}
+
+function getSms() {
+  return smsTotalSettin;
+}
 //setters
 
 
@@ -81,6 +88,20 @@ var getCritical = function(){
    return smsTotal +callTotal;
  }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 return{
 calculateBill,
 setCostCall,
@@ -91,7 +112,9 @@ getWarning,
 getCritical,
 smsBill,
 callBill,
-totalBill,
+getCall,
+getSms,
+totalBill
 
 
 }
