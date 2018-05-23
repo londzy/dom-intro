@@ -16,32 +16,27 @@ describe("settingsWithBill", function(){
 
 
     it("should return the total of 'call' and 'sms' added together  " ,function()  {
-      var totalss = settingsBill() ;
-      //smsz.setCostSms(1)
-      totalss.callBill('calls')
-      totalss.smsBill('sms')
-      assert.equal(totalss.getSms(),3);
+      var to = settingsBill() ;
+      to.setCostSms(3)
+      to.setCostCall(2)
+      to.smsBill('sms')
+      to.smsBill('sms')
+      to.callBill('call')
+      assert.equal(to.getCall(),2);
     });
 
+      it("should show warning level amount R6 " ,function()  {
+        var warninng = settingsBill() ;
+        warninng.setWarning(6)
+        assert.equal(warninng.getWarningLevel(),6);
+      });
 
-  // it("should return R0.75 when 'sms' is inputted" ,function()  {
-  //   var smsz = TextBill() ;
-  //   smsz.bills('sms')
-  //   assert.equal(smsz.getSms(),0.75);
-  // });
-  //
-  // it("should show the total of 'sms' and 'call' added R3.50   " ,function()  {
-  //   var nothing = TextBill() ;
-  //     nothing.bills('call')
-  //     nothing.bills('sms')
-  //   //nothing.bills('totalOne')
-  //   assert.equal(nothing.getTotalCost(),3.50);
-  // });
-  //
-  //   it("should show 0.00 when nothing is inputted " ,function()  {
-  //     var nothing = TextBill() ;
-  //     nothing.bills('totalOne')
-  //     assert.equal(nothing.getTotalCost(),0.00);
-  //   });
+    it("should show critical level amount R12 " ,function()  {
+        var criticall = settingsBill() ;
+        criticall.setCritical(12)
+        assert.equal(criticall.getCriticalLevel(),12);
+
+    });
+
 
 });

@@ -46,6 +46,18 @@ function getCall() {
 function getSms() {
   return smsTotalSettin;
 }
+
+function getTotalCost() {
+  return totalSettings;
+}
+
+function getWarningLevel() {
+  return warningLevelSettin;
+}
+
+function getCriticalLevel() {
+  return criticalLevelSettin;
+}
 //setters
 
 
@@ -89,19 +101,6 @@ var getCritical = function(){
  }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 return{
 calculateBill,
 setCostCall,
@@ -114,7 +113,9 @@ smsBill,
 callBill,
 getCall,
 getSms,
-totalBill
+getTotalCost,
+getWarningLevel,
+getCriticalLevel
 
 
 }
