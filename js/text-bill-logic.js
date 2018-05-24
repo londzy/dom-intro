@@ -1,4 +1,4 @@
-function TextBill() {
+ var TextBill = function() {
 
 
   var callTotal = 0;
